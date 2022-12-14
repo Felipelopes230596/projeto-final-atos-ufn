@@ -1,0 +1,27 @@
+﻿@model Clientes
+@{
+    ViewData["Title"] = "Cadastro Clientes";
+}
+<div class="container mt-5 pt-3 w-25">
+    <form asp-controller="Cliente" asp-action="Cadastrar" method="post">
+        <fieldset>
+            <legend>Cadastrar Cliente</legend>
+            <div class="mb-3">
+                <input type="text" asp-for="nome" id="disabledTextInput" class="form-control" placeholder="Nome completo">
+                @Html.ValidationMessageFor(x => x.nome)
+            </div>
+            <div class="mb-3">
+                <input type="text" asp-for="cpf" id="disabledTextInput" class="form-control" placeholder="CPF">
+                @Html.ValidationMessageFor(x => x.cpf)
+            </div>
+            <div class="mb-3">
+                <input type="text" asp-for="telefone" id="disabledTextInput" class="form-control" placeholder="Telefone">
+                @Html.ValidationMessageFor(x => x.telefone)
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+            
+        </fieldset>
+    </form>
+</div>

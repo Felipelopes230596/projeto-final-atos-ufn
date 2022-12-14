@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Alugar";
+}
+<div class="container mt-5 pt-3 w-25">
+    <form>
+        <fieldset>
+            <legend>Alugar</legend>
+            <div class="mb-3">
+                <label class="form-label">Cliente</label>
+                <select class="form-select">
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Data inicial</label>
+                <input type="date" id="disabledTextInput" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Data final</label>
+                <input type="date" id="disabledTextInput" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Categoria / Valor diária</label>
+
+                
+                <select class="form-select">
+                </select>
+            </div>          
+
+            <input type="submit" asp-controller="alugar" asp-action="simulacao" class="btn btn-primary" value="Simular Valor" />
+        </fieldset>
+    </form>
+</div>
