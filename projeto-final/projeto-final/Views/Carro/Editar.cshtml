@@ -1,0 +1,36 @@
+﻿@model projeto_final.Models.CarrosModel
+@{
+    ViewData["Title"] = "Editar Carro";
+}
+<div class="container mt-5 pt-3 w-25">
+    <form asp-controller="Carro" asp-action="SalvarEdicao" method="post">
+        <fieldset>
+            <legend>Editar Carro</legend>
+            <input type="hidden" asp-for="id" />
+            <div class="mb-3">
+                <input type="text" asp-for="marca" value="@Model.arrayCarro[0]" id="disabledTextInput" class="form-control" placeholder="Marca">
+            </div>
+            <div class="mb-3">
+                <input type="text" asp-for="modelo" value="@Model.arrayCarro[1]" id="disabledTextInput" class="form-control" placeholder="Modelo">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Categoria</label>
+                <select name="CategoriaId" class="form-select">
+                    @foreach (var item in Model.ListaCategorias)
+                    {
+                        if (item.id == Convert.ToInt32(Model.arrayCarro[2]))
+                        {
+                            <option selected="true" value="@item.id">@item.categoria</option>
+                        }
+                        else
+                        {
+                            <option value="@item.id" >@item.categoria</option>
+                        }
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn alert-secondary btn-block" asp-action="Listar" asp-controller="Carro" role="button">Voltar</a>
+        </fieldset>
+    </form>
+</div>

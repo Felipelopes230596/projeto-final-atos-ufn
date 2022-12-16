@@ -6,10 +6,10 @@ namespace projeto_final.Controllers
 {
     public class ClienteController : Controller
     {
-        private readonly IClienteRepositorio _clienteRepositorio;
-        public ClienteController(IClienteRepositorio clienteRepositorio)
+        private readonly IUtilRepositorio _utilRepositorio;
+        public ClienteController(IUtilRepositorio utilRepositorio)
         {
-            _clienteRepositorio = clienteRepositorio;
+            _utilRepositorio = utilRepositorio;
         }
         public IActionResult CadastroCliente()
         {
@@ -18,19 +18,20 @@ namespace projeto_final.Controllers
 
         public IActionResult Listar()
         {
-           List<Clientes> clientes =  _clienteRepositorio.ListarTodos();
+           List<Clientes> clientes = _utilRepositorio.ListarTodos();
             return View(clientes);
         }
 
+
         public IActionResult Editar(int id)
         {
-            Clientes cliente = _clienteRepositorio.ListarPorId(id);
+            Clientes cliente = _utilRepositorio.ListarPorId(id);
             return View(cliente);
         }
 
         public IActionResult Apagar(int id)
         {
-            _clienteRepositorio.Apagar(id);
+            _utilRepositorio.Apagar(id);
             return RedirectToAction("Listar");
         }
 
@@ -39,7 +40,7 @@ namespace projeto_final.Controllers
         {
             if (ModelState.IsValid)
             {
-                _clienteRepositorio.Adicionar(cliente);
+                _utilRepositorio.Adicionar(cliente);
                 return RedirectToAction("Listar");
             }
             return RedirectToAction("CadastroCliente", cliente);
@@ -48,7 +49,7 @@ namespace projeto_final.Controllers
         [HttpPost]
         public IActionResult SalvarEdicao(Clientes cliente)
         {
-            _clienteRepositorio.Atualizar(cliente);
+            _utilRepositorio.Atualizar(cliente);
             return RedirectToAction("Listar");
         }
     }

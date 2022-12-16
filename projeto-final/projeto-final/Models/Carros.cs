@@ -5,6 +5,7 @@
         public int id { get; set; }
         public string marca { get; set; }
         public string modelo { get; set; }
-        public virtual Categoria categoria { get; set; }
+        public int categoriaId { get; set; } 
+        public Categoria categoria { get; set; }
     }
 }

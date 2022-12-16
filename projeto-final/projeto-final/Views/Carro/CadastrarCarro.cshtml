@@ -1,22 +1,28 @@
-﻿@{
+﻿@model projeto_final.Models.CarrosModel
+@{
     ViewData["Title"] = "Cadastrar Carro";
 }
 <div class="container mt-5 pt-3 w-25">
-    <form>
+    <form asp-controller="Carro" asp-action="Cadastrar" method="post">
         <fieldset>
             <legend>Cadastrar Carros</legend>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Marca">
+                <input type="text" asp-for="marca" id="disabledTextInput" class="form-control" placeholder="Marca">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Modelo">
+                <input type="text" asp-for="modelo" id="disabledTextInput" class="form-control" placeholder="Modelo">
             </div>
             <div class="mb-3">
                 <label class="form-label">Categoria</label>
-                <select class="form-select">                  
+                <select name="CategoriaId" class="form-select">
+                    @foreach (var item in Model.ListaCategorias)
+                    {
+                        <option value="@item.id">@item.categoria</option>
+                    }
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </fieldset>
     </form>
 </div>
+

@@ -14,5 +14,9 @@ namespace projeto_final
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         { 
         }
+
+        public Contexto()
+        {
+        }
     }
 }

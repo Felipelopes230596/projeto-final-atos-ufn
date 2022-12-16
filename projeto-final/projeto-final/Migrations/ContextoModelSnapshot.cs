@@ -18,9 +18,6 @@ namespace projetofinal.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,24 +30,27 @@ namespace projetofinal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<int>("carroid")
+                    b.Property<int?>("Aluguelid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Categoriaid")
                         .HasColumnType("int");
 
                     b.Property<int>("clienteid")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataFinal")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("dataInicial")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("quantidadeDiarias")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("valorTotal")
                         .HasColumnType("float");
 
                     b.HasKey("id");
 
-                    b.HasIndex("carroid");
+                    b.HasIndex("Aluguelid");
+
+                    b.HasIndex("Categoriaid");
 
                     b.HasIndex("clienteid");
 
@@ -65,7 +65,7 @@ namespace projetofinal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<int>("categoriaid")
+                    b.Property<int>("categoriaId")
                         .HasColumnType("int");
 
                     b.Property<string>("marca")
@@ -78,7 +78,7 @@ namespace projetofinal.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("categoriaid");
+                    b.HasIndex("categoriaId");
 
                     b.ToTable("Carros");
                 });
@@ -130,9 +130,13 @@ namespace projetofinal.Migrations
 
             modelBuilder.Entity("projeto_final.Models.Aluguel", b =>
                 {
-                    b.HasOne("projeto_final.Models.Carros", "carro")
+                    b.HasOne("projeto_final.Models.Aluguel", null)
+                        .WithMany("listaAluguel")
+                        .HasForeignKey("Aluguelid");
+
+                    b.HasOne("projeto_final.Models.Categoria", "Categoria")
                         .WithMany()
-                        .HasForeignKey("carroid")
+                        .HasForeignKey("Categoriaid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -142,7 +146,7 @@ namespace projetofinal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("carro");
+                    b.Navigation("Categoria");
 
                     b.Navigation("cliente");
                 });
@@ -151,11 +155,16 @@ namespace projetofinal.Migrations
                 {
                     b.HasOne("projeto_final.Models.Categoria", "categoria")
                         .WithMany()
-                        .HasForeignKey("categoriaid")
+                        .HasForeignKey("categoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("categoria");
+                });
+
+            modelBuilder.Entity("projeto_final.Models.Aluguel", b =>
+                {
+                    b.Navigation("listaAluguel");
                 });
 #pragma warning restore 612, 618
         }

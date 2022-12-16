@@ -1,32 +1,39 @@
-﻿@{
+﻿@model projeto_final.Models.AlugarModel
+@{
     ViewData["Title"] = "Alugar";
 }
 <div class="container mt-5 pt-3 w-25">
-    <form>
+    <form asp-controller="Alugar" asp-action="Simular" method="post">
+        <input type="hidden" asp-for="id" />
         <fieldset>
             <legend>Alugar</legend>
             <div class="mb-3">
                 <label class="form-label">Cliente</label>
-                <select class="form-select">
+                <select asp-for="cliente.id" class="form-select">
+                    @foreach (var item in Model.listaClientes)
+                    {
+                        <option value="@item.id">@item.nome</option>
+                    }
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Data inicial</label>
-                <input type="date" id="disabledTextInput" class="form-control">
-            </div>
+                <label class="form-label">Quantidade de diárias</label>
+                <input type="text" asp-for="quantidadeDiarias" id="disabledTextInput" class="form-control">
+            </div>            
             <div class="mb-3">
-                <label class="form-label">Data final</label>
-                <input type="date" id="disabledTextInput" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Categoria / Valor diária</label>
-
-                
-                <select class="form-select">
+                <label class="form-label">categoria / valor diária</label>
+                <select id="idcategoria" asp-for="categoria.id" class="form-select">
+                    @foreach (var lCategoria in Model.listaCategorias)
+                    {
+                        <option value="@lCategoria.id">@lCategoria.categoria / R$@lCategoria.valorDiaria</option>
+                    }
                 </select>
-            </div>          
+            </div>
 
-            <input type="submit" asp-controller="alugar" asp-action="simulacao" class="btn btn-primary" value="Simular Valor" />
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+            <a class="btn btn alert-secondary btn-block" asp-controller="Home" asp-action="Index" role="button">Voltar</a>
         </fieldset>
     </form>
 </div>
+
+                

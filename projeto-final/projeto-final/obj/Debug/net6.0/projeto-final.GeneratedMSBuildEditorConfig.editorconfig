@@ -20,12 +20,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx1Z2FyXEFsdWdhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.NET Academia/Projeto Final Atos/projeto-final/projeto-final/Views/Alugar/Simulacao.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx1Z2FyXFNpbXVsYWNhby5jc2h0bWw=
+[D:/.NET Academia/Projeto Final Atos/projeto-final/projeto-final/Views/Alugar/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx1Z2FyXExpc3Rhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.NET Academia/Projeto Final Atos/projeto-final/projeto-final/Views/Carro/CadastrarCarro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fycm9cQ2FkYXN0cmFyQ2Fycm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET Academia/Projeto Final Atos/projeto-final/projeto-final/Views/Carro/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fycm9cRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.NET Academia/Projeto Final Atos/projeto-final/projeto-final/Views/Carro/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fycm9cTGlzdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.NET Academia/Projeto Final Atos/projeto-final/projeto-final/Views/Cliente/CadastroCliente.cshtml]

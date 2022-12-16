@@ -16,7 +16,7 @@ namespace projeto_final
         {
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer().AddDbContext<Contexto>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
-            services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+            services.AddScoped<IUtilRepositorio, UtilRepositorio>();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
